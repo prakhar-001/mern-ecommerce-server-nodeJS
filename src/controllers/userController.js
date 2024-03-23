@@ -4,7 +4,7 @@ import ErrorHandler from "../utils/utility-class.js"
 
 export const newUser = TryCatch(
     async (req,res,next) => {
-      const { name, email, photo, gender, _id, dob } = req.body;
+      const { name, email, photo, gender, _id, dob, password } = req.body;
   
       let user = await User.findById(_id);
   
@@ -14,7 +14,7 @@ export const newUser = TryCatch(
           message: `Welcome, ${user.name}`,
         });
   
-      if (!_id || !name || !email || !photo || !gender || !dob)
+      if (!_id || !name || !email || !photo || !gender || !dob || password)
         return next(new ErrorHandler("Please add all fields", 400));
   
       user = await User.create({
@@ -23,6 +23,7 @@ export const newUser = TryCatch(
         photo,
         gender,
         _id,
+        password,
         dob: new Date(dob),
       });
   

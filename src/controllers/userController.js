@@ -14,7 +14,7 @@ export const newUser = TryCatch(
           message: `Welcome, ${user.name}`,
         });
   
-      if (!_id || !name || !email || !photo || !gender || !dob || password)
+      if (!_id || !name || !email || !photo || !gender || !dob || !password)
         return next(new ErrorHandler("Please add all fields", 400));
   
       user = await User.create({

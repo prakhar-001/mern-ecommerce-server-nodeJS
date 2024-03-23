@@ -1,20 +1,6 @@
 import mongoose from "mongoose"
 import validator from "validator";
 
-// interface IUser extends Document {
-//     _id: string;
-//     name: string;
-//     email: string;
-//     photo: string;
-//     role: "admin" | "user";
-//     gender: "male" | "female";
-//     dob: Date;
-//     createdAt: Date;
-//     updatedAt: Date;
-//     //   Virtual Attribute
-//     age: number;
-// }
-
 const schema = new mongoose.Schema(
     {
       _id: {
@@ -34,6 +20,10 @@ const schema = new mongoose.Schema(
       photo: {
         type: String,
         required: [true, "Please add Photo"],
+      },
+      password: {
+        type: String,
+        required: [true, "Please add Password"],
       },
       role: {
         type: String,

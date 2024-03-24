@@ -113,17 +113,17 @@ export const newProduct = TryCatch(
 
 export const updateProduct = TryCatch(async (req, res, next) => {
     const { id } = req.params;
-    const { name, price, stock, category } = req.body;
-    const photo = req.file;
+    const { name, price, stock, category, photo } = req.body;
+    // const photo = req.file;
     const product = await Product.findById(id);
   
     if (!product) return next(new ErrorHandler("Product Not Found", 404));
   
     if (photo) {
-      rm(product.photo, () => {
-        console.log("Old Photo Deleted");
-      });
-      product.photo = photo.path;
+      // rm(product.photo, () => {
+      //   console.log("Old Photo Deleted");
+      // });
+      product.photo = photo;
     }
   
     if (name) product.name = name;

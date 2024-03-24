@@ -17,6 +17,10 @@ const schema = new mongoose.Schema(
         required: [true, "Please enter Name"],
         validate: validator.default.isEmail,
       },
+      password: {
+        type: String,
+        required: [true, "Please enter Password"],
+      },
       photo: {
         type: String,
         required: [true, "Please add Photo"],

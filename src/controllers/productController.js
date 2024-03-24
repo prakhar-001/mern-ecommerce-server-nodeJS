@@ -77,15 +77,15 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
     async (req, res, next) => {
-      const { name, price, stock, category } = req.body;
-      const photo = req.file;
+      const { name, price, stock, category, photo } = req.body;
+      // const photo = req.file;
   
       if (!photo) return next(new ErrorHandler("Please add Photo", 400));
   
       if (!name || !price || !stock || !category) {
-        rm(photo.path, () => {
-          console.log("Deleted");
-        });
+        // rm(photo.path, () => {
+        //   console.log("Deleted");
+        // });
         return next(new ErrorHandler("Please enter All Fields", 400));
       }
   
@@ -94,7 +94,8 @@ export const newProduct = TryCatch(
         price,
         stock,
         category: category.toLowerCase(),
-        photo: photo.path,
+        photo,
+        // photo: photo.path,
       });
   
       invalidateCache({ 

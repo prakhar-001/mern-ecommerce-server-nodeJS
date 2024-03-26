@@ -62,6 +62,7 @@ const schema = new mongoose.Schema(
     orderItems: [
       {
         name: String,
+        description: String,
         photo: String,
         price: Number,
         quantity: Number,

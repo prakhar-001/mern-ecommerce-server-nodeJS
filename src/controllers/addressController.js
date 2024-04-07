@@ -12,11 +12,11 @@ export const myAddresses = TryCatch(async (req, res, next) => {
   
     let addresses = [];
   
-    if (myCache.has(key)) addresses = JSON.parse(myCache.get(key));
-    else {
+    // if (myCache.has(key)) addresses = JSON.parse(myCache.get(key));
+    // else {
       addresses = await Address.find({ user });
       myCache.set(key, JSON.stringify(addresses));
-    }
+    // }
     return res.status(200).json({
       success: true,
       addresses,
@@ -28,11 +28,11 @@ export const allAddresses = TryCatch(async (req, res, next) => {
   
     let addresses = [];
   
-    if (myCache.has(key)) addresses = JSON.parse(myCache.get(key));
-    else {
+    // if (myCache.has(key)) addresses = JSON.parse(myCache.get(key));
+    // else {
         addresses = await Address.find().populate("user", "name");
       myCache.set(key, JSON.stringify(addresses));
-    }
+    // }
     return res.status(200).json({
       success: true,
       addresses,

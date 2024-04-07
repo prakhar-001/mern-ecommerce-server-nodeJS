@@ -25,6 +25,23 @@ export const getlatestProducts = TryCatch(async (req, res, next) => {
 });
 
 
+
+export const getRecentProductsInCategory = TryCatch(async (req, res, next) => {
+    const { category } = req.query;
+    let recentProductsInCategory;
+
+      recentProductsInCategory = await Product.find({ category })
+      .sort({ createdAt: -1 }) // Sort by createdAt in descending order
+      .limit(4) // Limit to the 2 most recent products
+      .exec(); // Execute the query
+    
+    return res.status(200).json({
+      success: true,
+      recentProductsInCategory,
+    });
+});
+
+
 export const getAllCategories = TryCatch(async (req, res, next) => {
     let categories;
   
@@ -112,7 +129,7 @@ export const newProduct = TryCatch(
   );
 
 
-export const updateProduct = TryCatch(async (req, res, next) => {
+export const updateProduct = TryCatch(async (req, res, next) => { 
     const { id } = req.params;
     const { name, price, stock, category, photo, description } = req.body;
     // const photo = req.file;
@@ -170,8 +187,6 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
     });
 });
   
-
-
 
 export const getAllProducts = TryCatch(
     async (req, res, next) => {

@@ -25,6 +25,7 @@ const schema = new mongoose.Schema(
       },
     },
 
+    // here we are passing the user id, but this user id is not in the format of mongodb id becaue this id is provided by us or provided by firebase hence we are uysing its type as string and not mongoose.types...
     user: {
       type: String,
       ref: "User",

@@ -2,7 +2,7 @@ import express from "express";
 import { adminOnly } from "../middlewares/auth.js";
 
 import { singleUpload } from "../middlewares/multer.js";
-import { deleteProduct, getAdminProducts, getAllCategories, getAllProducts, getSingleProduct, getlatestProducts, newProduct, updateProduct } from "../controllers/productController.js";
+import { deleteProduct, getAdminProducts, getAllCategories, getAllProducts, getSingleProduct, getlatestProducts, newProduct, updateProduct, getRecentProductsInCategory } from "../controllers/productController.js";
 
 const app = express.Router();
 
@@ -14,6 +14,9 @@ app.get("/all", getAllProducts);
 
 //To get last 10 Products  - /api/v1/product/latest
 app.get("/latest", getlatestProducts);
+
+// to get last 4 products of any category
+app.get("/similarProducts", getRecentProductsInCategory);
 
 //To get all unique Categories  - /api/v1/product/categories
 app.get("/categories", getAllCategories);

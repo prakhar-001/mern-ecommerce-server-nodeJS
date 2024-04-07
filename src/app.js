@@ -13,6 +13,7 @@ import cors from "cors"
 import userRoute from "./routes/userRoute.js"
 import productRoute from "./routes/productRoute.js"
 import orderRoute from "./routes/orderRoute.js"
+import addressRoute from "./routes/addressRoute.js"
 import paymentRoute from "./routes/paymentRoute.js"
 import dashboardRoute from "./routes/statsRoute.js"
 
@@ -41,6 +42,7 @@ app.use(cors())
 app.use("/api/v1/user", userRoute)
 app.use("/api/v1/product", productRoute)
 app.use("/api/v1/order", orderRoute)
+app.use("/api/v1/address", addressRoute)
 app.use("/api/v1/payment", paymentRoute)
 app.use("/api/v1/dashboard", dashboardRoute)
 

@@ -52,6 +52,21 @@ export const newAddress = TryCatch(
   
       if (!address || !city || !state || !country || !pincode || !user)
         return next(new ErrorHandler("Please Enter All Fields", 400));
+      
+      // Check if an address with the same details already exists
+      const existingAddress = await Address.findOne({
+        address,
+        city,
+        state,
+        country,
+        pincode,
+        user,
+      });
+
+      if (existingAddress) {
+        // If an address already exists, return an error message
+        return next(new ErrorHandler("Order Will be Delivered to your Selected Address", 400));
+      }
   
       const addressData = await Address.create({
         address,

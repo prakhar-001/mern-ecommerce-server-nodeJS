@@ -1,2 +1,3 @@
 Commit 10 -> address route added and product controoller to get last 4 recently added products of any specific category added
 Commit 11 -> 
+Commit 12 -> Wishlist Functionality added, address can be saved and selected from shipping page, address can be modified from profile page 
